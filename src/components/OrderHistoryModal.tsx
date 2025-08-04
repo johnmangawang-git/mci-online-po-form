@@ -1,29 +1,9 @@
 import React, { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, IconButton, Typography, Button, Box } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, IconButton, Typography, Button, Box, DialogActions } from '@mui/material';
 import { Close as CloseIcon, Download as DownloadIcon } from '@mui/icons-material';
 import PoDetailsModal from './PoDetailsModal';
 import * as XLSX from 'xlsx';
-
-interface PoItem {
-  id: number;
-  itemCode: string;
-  description: string;
-  uom: string;
-  supplier: string;
-  unitPrice: number;
-  quantity: number;
-  amount: number;
-  soh: number;
-}
-
-interface OrderHistoryEntry {
-  poNumber: string;
-  date: string;
-  time: string;
-  items: PoItem[];
-  status: string;
-  user: string;
-}
+import { PoItem, OrderHistoryEntry } from '../types';
 
 interface OrderHistoryModalProps {
   orderHistory: OrderHistoryEntry[];

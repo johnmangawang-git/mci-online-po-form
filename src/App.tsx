@@ -1,44 +1,18 @@
 import React, { useState, useEffect } from 'react';
+
 import { AppBar, Toolbar, Typography, Button, Container, Box, TextField, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import { UploadFile as UploadIcon, History as HistoryIcon, Delete as DeleteIcon, Print as PrintIcon, Download as DownloadIcon, Login as LoginIcon, Logout as LogoutIcon } from '@mui/icons-material';
 import PoTable from './components/PoTable';
 import OrderHistoryModal from './components/OrderHistoryModal';
 import * as XLSX from 'xlsx';
-
-interface PoItem {
-  id: number;
-  itemCode: string;
-  description: string;
-  uom: string;
-  supplier: string;
-  unitPrice: number;
-  quantity: number;
-  amount: number;
-}
-
-interface LookupEntry {
-  description: string;
-  uom: string;
-}
-
-interface LookupData {
-  [itemCode: string]: LookupEntry;
-}
-
-interface OrderHistoryEntry {
-  poNumber: string;
-  date: string;
-  time: string;
-  items: PoItem[];
-  status: string; // e.g., 'Pending', 'Delivered'
-  user: string;
-}
+import { PoItem, OrderHistoryEntry } from './types';
 
 interface User {
   username: string;
   password: string;
   role: 'admin' | 'user';
 }
+
 
 const USERS: User[] = [
   { username: 'admin', password: 'admin', role: 'admin' },

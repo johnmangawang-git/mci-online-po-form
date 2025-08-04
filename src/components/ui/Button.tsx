@@ -7,7 +7,7 @@ interface ButtonProps {
   primary?: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, primary }) => {
+const Button: React.FC<React.PropsWithChildren<ButtonProps>> = ({ children, onClick, primary }) => {
   const buttonClasses = [styles.button, primary ? styles.primary : ''].join(' ');
 
   return (

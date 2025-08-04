@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React from 'react';
 import Layout from '../layout/Layout';
 import PoTable from '../ui/PoTable';
 import Button from '../ui/Button';
@@ -36,5 +37,6 @@ const PurchaseOrder: React.FC = () => {
     </Layout>
   );
 };
+
 
 export default PurchaseOrder;
