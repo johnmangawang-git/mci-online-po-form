@@ -14,11 +14,9 @@ interface OrderHistoryModalProps {
 
 const OrderHistoryModal: React.FC<OrderHistoryModalProps> = ({ orderHistory, onClose, loggedInUser, isAdmin }) => {
   const [selectedPo, setSelectedPo] = useState<OrderHistoryEntry | null>(null);
-
   const filteredHistory = isAdmin
     ? orderHistory
     : orderHistory.filter((entry) => entry.user === loggedInUser);
-
   const handleSaveAllOrders = () => {
     if (orderHistory.length === 0) {
       alert('No order history to save.');
@@ -126,6 +124,11 @@ const OrderHistoryModal: React.FC<OrderHistoryModalProps> = ({ orderHistory, onC
                 <Typography variant="body2" sx={{ fontWeight: 'medium', color: '#388e3c', marginTop: 1 }}>
                   Status: {entry.status}
                 </Typography>
+                {isAdmin && (
+                  <Typography variant="body2" sx={{ color: '#616161', marginTop: 1 }}>
+                    User: {entry.user}
+                  </Typography>
+                )}
               </Button>
             ))}
           </Box>
